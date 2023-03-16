@@ -1,3 +1,10 @@
 {
-  "cSpell.words": ["fastify", "Parens", "rocketseat", "tsup"]
+  "cSpell.words": [
+    "codepaths",
+    "fastify",
+    "Parens",
+    "rocketseat",
+    "tsbuildinfo",
+    "tsup"
+  ]
 }
