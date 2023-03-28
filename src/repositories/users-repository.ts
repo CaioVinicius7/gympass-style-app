@@ -1,6 +1,7 @@
-import { Prisma, User } from "@prisma/client";
+import { UserDTO } from "@/dtos/user-dto";
+import { CreateUserDTO } from "@/dtos/create-user-dto";
 
 export interface usersRepository {
-  findByEmail(email: string): Promise<User | null>;
-  create(data: Prisma.UserCreateInput): Promise<User>;
+  findByEmail(email: string): Promise<UserDTO | null>;
+  create(data: CreateUserDTO): Promise<UserDTO>;
 }
