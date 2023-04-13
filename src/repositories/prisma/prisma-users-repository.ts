@@ -5,6 +5,16 @@ import { UserDTO } from "@/dtos/user-dto";
 import { CreateUserDTO } from "@/dtos/create-user-dto";
 
 export class PrismaUsersRepository implements usersRepository {
+  async findById(id: string): Promise<UserDTO | null> {
+    const user = await prisma.user.findUnique({
+      where: {
+        id
+      }
+    });
+
+    return user;
+  }
+
   async findByEmail(email: string): Promise<UserDTO | null> {
     const user = await prisma.user.findUnique({
       where: {
