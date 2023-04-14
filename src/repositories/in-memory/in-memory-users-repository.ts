@@ -1,3 +1,5 @@
+import { randomUUID } from "node:crypto";
+
 import { CreateUserDTO } from "@/dtos/create-user-dto";
 import { UserDTO } from "@/dtos/user-dto";
 
@@ -28,7 +30,7 @@ export class InMemoryUsersRepository implements usersRepository {
 
   async create(data: CreateUserDTO): Promise<UserDTO> {
     const user = {
-      id: "user-1",
+      id: randomUUID(),
       name: data.name,
       email: data.email,
       password_hash: data.password_hash,
