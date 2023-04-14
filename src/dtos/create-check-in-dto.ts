@@ -1,4 +1,5 @@
 export interface CreateCheckInDTO {
-  userId: string;
-  gymId: string;
+  user_id: string;
+  gym_id: string;
+  validated_at?: Date | string | null;
 }
