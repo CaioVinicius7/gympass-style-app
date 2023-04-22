@@ -18,13 +18,13 @@ describe("Check In Use Case", () => {
       inMemoryGymsRepository
     );
 
-    inMemoryGymsRepository.items.push({
+    inMemoryGymsRepository.create({
       id: "gym-01",
       title: "JavaScript Gym",
-      description: "",
+      description: null,
+      phone: "(35) 9 4002-8922",
       latitude: -22.4173682,
-      longitude: -45.4869312,
-      phone: "(35) 9 4002-8922"
+      longitude: -45.4869312
     });
 
     vi.useFakeTimers();
@@ -88,13 +88,13 @@ describe("Check In Use Case", () => {
   });
 
   it("Should be able to check in on distant gym", async () => {
-    inMemoryGymsRepository.items.push({
+    inMemoryGymsRepository.create({
       id: "gym-02",
       title: "typeScript Gym",
-      description: "",
+      description: null,
+      phone: "(35) 9 9999-9999",
       latitude: -22.4099913,
-      longitude: -45.4370964,
-      phone: "(35) 9 9999-9999"
+      longitude: -45.4370964
     });
 
     await expect(() =>
