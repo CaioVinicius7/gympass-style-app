@@ -22,8 +22,8 @@ describe("Check In Use Case", () => {
       id: "gym-01",
       title: "JavaScript Gym",
       description: "",
-      latitude: 0,
-      longitude: 0,
+      latitude: -22.4173682,
+      longitude: -45.4869312,
       phone: "(35) 9 4002-8922"
     });
 
@@ -85,5 +85,25 @@ describe("Check In Use Case", () => {
     });
 
     expect(checkIn.id).toEqual(expect.any(String));
+  });
+
+  it("Should be able to check in on distant gym", async () => {
+    inMemoryGymsRepository.items.push({
+      id: "gym-02",
+      title: "typeScript Gym",
+      description: "",
+      latitude: -22.4099913,
+      longitude: -45.4370964,
+      phone: "(35) 9 9999-9999"
+    });
+
+    await expect(() =>
+      sut.execute({
+        userId: "user-01",
+        gymId: "gym-02",
+        userLatitude: -22.4173682,
+        userLongitude: -45.4869312
+      })
+    ).rejects.toBeInstanceOf(Error);
   });
 });
