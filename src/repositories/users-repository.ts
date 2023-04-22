@@ -1,8 +1,9 @@
-import { UserDTO } from "@/dtos/user-dto";
-import { CreateUserDTO } from "@/dtos/create-user-dto";
+import type { User } from "@/types";
+
+import type { CreateUserPayload } from "./payloads";
 
 export interface usersRepository {
-  findById(id: string): Promise<UserDTO | null>;
-  findByEmail(email: string): Promise<UserDTO | null>;
-  create(data: CreateUserDTO): Promise<UserDTO>;
+  findById(id: string): Promise<User | null>;
+  findByEmail(email: string): Promise<User | null>;
+  create(data: CreateUserPayload): Promise<User>;
 }

@@ -1,9 +1,9 @@
 import { hash } from "bcryptjs";
 
-import { UserAlreadyExistsError } from "./errors/user-already-exists-error";
+import type { User } from "@/types";
+import type { usersRepository } from "@/repositories/users-repository";
 
-import { usersRepository } from "@/repositories/users-repository";
-import type { UserDTO } from "@/dtos/user-dto";
+import { UserAlreadyExistsError } from "./errors/user-already-exists-error";
 
 interface RegisterUseCaseRequest {
   name: string;
@@ -12,7 +12,7 @@ interface RegisterUseCaseRequest {
 }
 
 interface RegisterUseCaseResponse {
-  user: UserDTO;
+  user: User;
 }
 
 export class RegisterUseCase {

@@ -1,5 +1,5 @@
-export interface CreateGymDTO {
-  id?: string;
+export interface Gym {
+  id: string;
   title: string;
   description: string | null;
   phone: string | null;

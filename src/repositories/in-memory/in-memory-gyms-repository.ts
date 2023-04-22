@@ -1,14 +1,14 @@
 import { randomUUID } from "node:crypto";
 
-import type { GymDTO } from "@/dtos/gym-dto";
-import type { CreateGymDTO } from "@/dtos/create-gym-dto";
+import type { Gym } from "@/types";
 
-import { GymsRepository } from "../gyms-repository";
+import type { CreateGymPayload } from "../payloads/create-gym-payload";
+import type { GymsRepository } from "../gyms-repository";
 
 export class InMemoryGymsRepository implements GymsRepository {
-  public items: GymDTO[] = [];
+  public items: Gym[] = [];
 
-  async findById(id: string): Promise<GymDTO | null> {
+  async findById(id: string): Promise<Gym | null> {
     const gym = this.items.find((item) => item.id === id);
 
     if (!gym) {
@@ -18,7 +18,7 @@ export class InMemoryGymsRepository implements GymsRepository {
     return gym;
   }
 
-  async create(data: CreateGymDTO): Promise<GymDTO> {
+  async create(data: CreateGymPayload): Promise<Gym> {
     const gym = {
       id: data.id ?? randomUUID(),
       title: data.title,

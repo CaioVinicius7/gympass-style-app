@@ -1,6 +1,6 @@
-import { CheckInDTO } from "@/dtos/check-in-dto";
-import { CheckInsRepository } from "@/repositories/check-ins-repository";
-import { GymsRepository } from "@/repositories/gyms-repository";
+import type { CheckIn } from "@/types";
+import type { CheckInsRepository } from "@/repositories/check-ins-repository";
+import type { GymsRepository } from "@/repositories/gyms-repository";
 
 import { getDistanceBetweenCoordinates } from "@/utils/get-distance-between-coordinates";
 
@@ -16,7 +16,7 @@ interface CheckInUseCaseRequest {
 }
 
 interface CheckInUseCaseResponse {
-  checkIn: CheckInDTO;
+  checkIn: CheckIn;
 }
 
 export class CheckInUseCase {

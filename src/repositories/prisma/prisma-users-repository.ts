@@ -1,11 +1,12 @@
 import { usersRepository } from "../users-repository";
 
 import { prisma } from "@/lib/prisma";
-import { UserDTO } from "@/dtos/user-dto";
-import { CreateUserDTO } from "@/dtos/create-user-dto";
+import type { User } from "@/types";
+
+import type { CreateUserPayload } from "../payloads/create-user-payload";
 
 export class PrismaUsersRepository implements usersRepository {
-  async findById(id: string): Promise<UserDTO | null> {
+  async findById(id: string): Promise<User | null> {
     const user = await prisma.user.findUnique({
       where: {
         id
@@ -15,7 +16,7 @@ export class PrismaUsersRepository implements usersRepository {
     return user;
   }
 
-  async findByEmail(email: string): Promise<UserDTO | null> {
+  async findByEmail(email: string): Promise<User | null> {
     const user = await prisma.user.findUnique({
       where: {
         email
@@ -25,7 +26,7 @@ export class PrismaUsersRepository implements usersRepository {
     return user;
   }
 
-  async create(data: CreateUserDTO): Promise<UserDTO> {
+  async create(data: CreateUserPayload): Promise<User> {
     const user = await prisma.user.create({
       data
     });

@@ -1,4 +1,4 @@
-export interface CheckInDTO {
+export interface CheckIn {
   id: string;
   created_at: Date;
   validated_at: Date | string | null;

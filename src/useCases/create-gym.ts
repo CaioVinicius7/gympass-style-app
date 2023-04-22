@@ -1,5 +1,5 @@
-import type { GymDTO } from "@/dtos/gym-dto";
-import { GymsRepository } from "@/repositories/gyms-repository";
+import type { Gym } from "@/types";
+import type { GymsRepository } from "@/repositories/gyms-repository";
 
 interface CreateGymUseCaseRequest {
   title: string;
@@ -10,7 +10,7 @@ interface CreateGymUseCaseRequest {
 }
 
 interface CreateGymUseCaseResponse {
-  gym: GymDTO;
+  gym: Gym;
 }
 
 export class CreateGymUseCase {

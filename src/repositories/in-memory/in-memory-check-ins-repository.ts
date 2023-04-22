@@ -1,18 +1,18 @@
 import { randomUUID } from "node:crypto";
 import dayjs from "dayjs";
 
-import { CheckInDTO } from "@/dtos/check-in-dto";
-import { CreateCheckInDTO } from "@/dtos/create-check-in-dto";
+import type { CheckIn } from "@/types";
 
-import { CheckInsRepository } from "../check-ins-repository";
+import type { CreateCheckInPayload } from "../payloads/create-check-in-payload";
+import type { CheckInsRepository } from "../check-ins-repository";
 
 export class InMemoryCheckInsRepository implements CheckInsRepository {
-  public items: CheckInDTO[] = [];
+  public items: CheckIn[] = [];
 
   async findByUserIdOnDate(
     userId: string,
     date: Date
-  ): Promise<CheckInDTO | null> {
+  ): Promise<CheckIn | null> {
     const startOfTheDay = dayjs(date).startOf("date");
     const endOfTheDay = dayjs(date).endOf("date");
 
@@ -32,7 +32,7 @@ export class InMemoryCheckInsRepository implements CheckInsRepository {
     return checkOnSameDate;
   }
 
-  async create(data: CreateCheckInDTO): Promise<CheckInDTO> {
+  async create(data: CreateCheckInPayload): Promise<CheckIn> {
     const checkIn = {
       id: randomUUID(),
       user_id: data.user_id,

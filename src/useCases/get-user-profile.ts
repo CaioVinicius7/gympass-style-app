@@ -1,5 +1,6 @@
-import { UserDTO } from "@/dtos/user-dto";
-import { usersRepository } from "@/repositories/users-repository";
+import type { User } from "@/types";
+import type { usersRepository } from "@/repositories/users-repository";
+
 import { ResourceNotFoundError } from "./errors/resource-not-found-error";
 
 interface GetUserProfileUseCaseRequest {
@@ -7,7 +8,7 @@ interface GetUserProfileUseCaseRequest {
 }
 
 interface GetUserProfileUseCaseResponse {
-  user: UserDTO;
+  user: User;
 }
 
 export class GetUserProfileUseCase {

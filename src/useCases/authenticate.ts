@@ -1,7 +1,7 @@
 import { compare } from "bcryptjs";
 
-import { UserDTO } from "@/dtos/user-dto";
-import { usersRepository } from "@/repositories/users-repository";
+import type { User } from "@/types";
+import type { usersRepository } from "@/repositories/users-repository";
 
 import { InvalidCredentialsError } from "./errors/invalid-credentials-error";
 
@@ -11,7 +11,7 @@ interface AuthenticateUseCaseRequest {
 }
 
 interface AuthenticateUseCaseResponse {
-  user: UserDTO;
+  user: User;
 }
 
 export class AuthenticateUseCase {
