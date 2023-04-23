@@ -11,7 +11,9 @@ describe("Fetch User Check Ins History Use Case", () => {
   beforeEach(() => {
     inMemoryCheckInsRepository = new InMemoryCheckInsRepository();
     sut = new FetchUserCheckInsHistoryUseCase(inMemoryCheckInsRepository);
+  });
 
+  it("Should be able to fetch user check in history", async () => {
     inMemoryCheckInsRepository.create({
       gym_id: "gym-01",
       user_id: "user-01"
@@ -21,21 +23,43 @@ describe("Fetch User Check Ins History Use Case", () => {
       gym_id: "gym-02",
       user_id: "user-01"
     });
-  });
 
-  it("Should be able to fetch user check in history", async () => {
     const { checkIns } = await sut.execute({
-      userId: "user-01"
+      userId: "user-01",
+      page: 1
     });
 
     expect(checkIns).toHaveLength(2);
-
     expect(checkIns).toEqual([
       expect.objectContaining({
         gym_id: "gym-01"
       }),
       expect.objectContaining({
         gym_id: "gym-02"
+      })
+    ]);
+  });
+
+  it("Should be able to fetch paginated user check in history", async () => {
+    for (let i = 1; i <= 22; i++) {
+      inMemoryCheckInsRepository.create({
+        gym_id: `gym-${i}`,
+        user_id: "user-01"
+      });
+    }
+
+    const { checkIns } = await sut.execute({
+      userId: "user-01",
+      page: 2
+    });
+
+    expect(checkIns).toHaveLength(2);
+    expect(checkIns).toEqual([
+      expect.objectContaining({
+        gym_id: "gym-21"
+      }),
+      expect.objectContaining({
+        gym_id: "gym-22"
       })
     ]);
   });
