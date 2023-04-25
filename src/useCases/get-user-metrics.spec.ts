@@ -14,12 +14,12 @@ describe("Get User Metrics Use Case", () => {
   });
 
   it("Should be able to get check ins count from metrics", async () => {
-    inMemoryCheckInsRepository.create({
+    await inMemoryCheckInsRepository.create({
       gym_id: "gym-01",
       user_id: "user-01"
     });
 
-    inMemoryCheckInsRepository.create({
+    await inMemoryCheckInsRepository.create({
       gym_id: "gym-02",
       user_id: "user-01"
     });

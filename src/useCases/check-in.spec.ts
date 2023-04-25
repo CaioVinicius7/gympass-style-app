@@ -12,7 +12,7 @@ let inMemoryGymsRepository: InMemoryGymsRepository;
 let sut: CheckInUseCase;
 
 describe("Check In Use Case", () => {
-  beforeEach(() => {
+  beforeEach(async () => {
     inMemoryCheckInsRepository = new InMemoryCheckInsRepository();
     inMemoryGymsRepository = new InMemoryGymsRepository();
     sut = new CheckInUseCase(
@@ -20,7 +20,7 @@ describe("Check In Use Case", () => {
       inMemoryGymsRepository
     );
 
-    inMemoryGymsRepository.create({
+    await inMemoryGymsRepository.create({
       id: "gym-01",
       title: "JavaScript Gym",
       description: null,
@@ -90,7 +90,7 @@ describe("Check In Use Case", () => {
   });
 
   it("Should be able to check in on distant gym", async () => {
-    inMemoryGymsRepository.create({
+    await inMemoryGymsRepository.create({
       id: "gym-02",
       title: "typeScript Gym",
       description: null,
