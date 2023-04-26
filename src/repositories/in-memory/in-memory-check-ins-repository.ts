@@ -9,6 +9,16 @@ import type { CheckInsRepository } from "../check-ins-repository";
 export class InMemoryCheckInsRepository implements CheckInsRepository {
   public items: CheckIn[] = [];
 
+  async findById(id: string): Promise<CheckIn | null> {
+    const checkIn = this.items.find((item) => item.id === id);
+
+    if (!checkIn) {
+      return null;
+    }
+
+    return checkIn;
+  }
+
   async findByUserIdOnDate(
     userId: string,
     date: Date
