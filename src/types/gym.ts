@@ -3,6 +3,6 @@ export interface Gym {
   title: string;
   description: string | null;
   phone: string | null;
-  latitude: number;
-  longitude: number;
+  latitude: number | any;
+  longitude: number | any;
 }
