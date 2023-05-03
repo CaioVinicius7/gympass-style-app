@@ -1,4 +1,4 @@
-import { FastifyRequest, FastifyReply } from "fastify";
+import type { FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
 
 import { makeAuthenticateUseCase } from "@/useCases/factories/make-authenticate-use-case";
