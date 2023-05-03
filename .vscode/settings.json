@@ -4,6 +4,7 @@
     "dayjs",
     "dtos",
     "fastify",
+    "middlewares",
     "Parens",
     "rocketseat",
     "tsbuildinfo",
