@@ -29,11 +29,12 @@ export class InMemoryUsersRepository implements usersRepository {
   }
 
   async create(data: CreateUserPayload): Promise<User> {
-    const user = {
+    const user: User = {
       id: randomUUID(),
       name: data.name,
       email: data.email,
       password_hash: data.password_hash,
+      role: "MEMBER",
       created_at: new Date()
     };
 
