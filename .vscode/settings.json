@@ -1,11 +1,16 @@
 {
   "cSpell.words": [
+    "apisolid",
+    "bitnami",
     "codepaths",
     "dayjs",
     "dtos",
     "fastify",
     "middlewares",
     "Parens",
+    "postgres",
+    "postgresql",
+    "POSTGRESQL",
     "rocketseat",
     "tsbuildinfo",
     "tsup"
